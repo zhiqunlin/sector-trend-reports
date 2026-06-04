@@ -3,318 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>厦门钨业(600549) 多指数趋势量化分析 — 2026-06-04</title>
+<title>有色·钨(884282) · 行业趋势推演</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
-.container{max-width:1200px;margin:0 auto;padding:20px}
-h1{font-size:1.8em;color:#f8fafc;text-align:center;padding:20px 0;border-bottom:2px solid #334155}
-h2{font-size:1.3em;color:#f1f5f9;margin:30px 0 15px;padding-left:10px;border-left:4px solid #3b82f6}
-.header{text-align:center;margin-bottom:20px}
-.header .badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:0.85em;margin:4px}
-.badge-bull{background:#22c55e20;color:#22c55e;border:1px solid #22c55e40}
-.badge-warn{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40}
-.badge-red{background:#ef444420;color:#ef4444;border:1px solid #ef444440}
-.badge-blue{background:#3b82f620;color:#3b82f6;border:1px solid #3b82f640}
-.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0}
-.summary-card{background:#1e293b;border-radius:12px;padding:20px;text-align:center;border:1px solid #334155}
-.summary-card .value{font-size:2em;font-weight:700;margin:8px 0}
-.summary-card .label{font-size:0.85em;color:#94a3b8}
-.bull{color:#ef4444}.bear{color:#22c55e}.neutral{color:#94a3b8}
-table{width:100%;border-collapse:collapse;margin:15px 0;background:#1e293b;border-radius:8px;overflow:hidden}
-th{background:#334155;padding:10px 12px;text-align:left;font-weight:600;font-size:0.9em}
-td{padding:10px 12px;border-bottom:1px solid #334155;font-size:0.9em}
-tr:last-child td{border-bottom:none}
-tr:hover{background:#2d3a4f}
-.chart-container{background:#1e293b;border-radius:12px;padding:20px;margin:20px 0;border:1px solid #334155}
-.chart-container canvas{max-height:350px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.alert-box{background:#f59e0b10;border:1px solid #f59e0b40;border-radius:8px;padding:15px;margin:15px 0}
-.alert-box.red{background:#ef444410;border-color:#ef444440}
-.conclusion-box{background:linear-gradient(135deg,#1e293b,#0f172a);border:2px solid #3b82f6;border-radius:12px;padding:20px;margin:20px 0}
-.score-bar{width:100%;height:8px;background:#334155;border-radius:4px;overflow:hidden;margin:4px 0}
-.score-bar-fill{height:100%;border-radius:4px;transition:width 0.5s}
-.fill-dir{background:#3b82f6}.fill-mom{background:#22c55e}.fill-stru{background:#f59e0b}.fill-vol{background:#ef4444}
-.flex-row{display:flex;gap:16px;flex-wrap:wrap}
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:0.8em;font-weight:600}
-.tag-a{background:#22c55e20;color:#22c55e}.tag-b{background:#3b82f620;color:#3b82f6}
-.tag-c{background:#94a3b820;color:#94a3b8}.tag-d{background:#f59e0b20;color:#f59e0b}
-.tag-e{background:#ef444420;color:#ef4444}.tag-f{background:#dc262620;color:#dc2626}
-.tag-g{background:#7c3aed20;color:#7c3aed}.tag-h{background:#ec489920;color:#ec4899}
-.stop-strong{color:#22c55e}.stop-mid{color:#f59e0b}.stop-weak{color:#ef4444}.stop-none{color:#64748b}
-.footer{text-align:center;color:#64748b;font-size:0.85em;padding:30px 0;border-top:1px solid #334155;margin-top:30px}
-@media(max-width:768px){.two-col{grid-template-columns:1fr}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif;background:#0f1923;color:#c9d1d9;line-height:1.6}
+.nav{background:#161b22;border-bottom:1px solid #21262d;padding:10px 24px;display:flex;gap:16px;align-items:center;position:sticky;top:0;z-index:10}
+.nav a{color:#8b949e;text-decoration:none;font-size:.9em;padding:4px 12px;border-radius:6px;transition:all .15s}
+.nav a:hover{color:#f0f6fc;background:#21262d}
+.nav a.active{color:#58a6ff;background:#1f6feb22}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.header{text-align:center;margin-bottom:32px}
+.header h1{font-size:24px;color:#f0f6fc;margin-bottom:4px}
+.header .meta{color:#8b949e;font-size:13px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.card{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:20px}
+.card h3{font-size:14px;color:#8b949e;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.card canvas{max-height:280px}
+.kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.kpi{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:14px 18px;flex:1;min-width:140px;text-align:center}
+.kpi .value{font-size:28px;font-weight:700;margin:4px 0}
+.kpi .label{font-size:11px;color:#8b949e;text-transform:uppercase}
+
+.label-a{color:#00d2ff} .label-b{color:#3a7bd5} .label-c{color:#f0ad4e}
+.label-d{color:#888} .label-e{color:#d9534f} .label-f{color:#c9302c}
+.label-g{color:#a94442} .label-h{color:#5bc0de}
+
+.warning-box{background:#d2991d15;border:1px solid #d2991d33;border-radius:8px;padding:12px 16px;margin-bottom:20px;color:#d2991d;font-size:13px}
+.alert-box{background:#d9534f15;border:1px solid #d9534f33;border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#d9534f;font-size:13px}
+.info-box{background:#3fb95015;border:1px solid #3fb95033;border-radius:8px;padding:12px 16px;margin-bottom:16px;color:#3fb950;font-size:13px}
+.section-title{font-size:16px;font-weight:700;color:#f0f6fc;margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid #21262d}
+
+.footer{text-align:center;padding:40px 20px;color:#484f58;font-size:12px;border-top:1px solid #21262d;margin-top:40px}
+.footer a{color:#58a6ff;text-decoration:none}
+
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}}
+.cycle-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.cycle-table th{background:#21262d;color:#8b949e;padding:8px 10px;text-align:center;font-weight:600}
+.cycle-table td{padding:8px 10px;text-align:center;border-bottom:1px solid #21262d}
+.cycle-table tr:hover td{background:#1f2428}
+.cycle-agree{color:#3fb950}.cycle-warn{color:#d2991d}.cycle-diverge{color:#d9534f}
+.cycle-divergence{background:#d9534f15;border:1px solid #d9534f33;border-radius:8px;padding:10px 14px;margin-top:12px;font-size:12px;color:#d9534f}
+
+/* 多指数矩阵表格 */
+.matrix-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.matrix-table th{background:#21262d;color:#8b949e;padding:8px 10px;text-align:center;font-weight:600}
+.matrix-table td{padding:7px 10px;text-align:center;border-bottom:1px solid #21262d}
+.matrix-table tr:hover td{background:#1f2428}
+.tag-concept{background:#3a7bd522;color:#58a6ff;border-radius:4px;padding:1px 6px;font-size:11px}
+.tag-sw{background:#3fb95022;color:#3fb950;border-radius:4px;padding:1px 6px;font-size:11px}
+.tag-benchmark{background:#d2991d22;color:#d2991d;border-radius:4px;padding:1px 6px;font-size:11px}
+.chg-up{color:#d9534f}.chg-down{color:#3fb950}.chg-flat{color:#8b949e}
+
+/* 个股快照 */
+.stock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.stock-item{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:10px 12px;text-align:center}
+.stock-item .s-val{font-size:18px;font-weight:700}
+.stock-item .s-lbl{font-size:10px;color:#484f58;margin-top:2px}
+
+/* 驱动归因 */
+.driver-list{list-style:none;margin-top:8px}
+.driver-item{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #21262d}
+.driver-rank{background:#21262d;color:#8b949e;border-radius:50%;width:22px;height:22px;line-height:22px;text-align:center;font-size:11px;flex-shrink:0}
+.driver-bar{flex:1;height:8px;background:#21262d;border-radius:4px;overflow:hidden}
+.driver-bar-fill{height:100%;background:linear-gradient(90deg,#3a7bd5,#00d2ff);border-radius:4px}
+.driver-corr{font-size:12px;font-weight:700;color:#58a6ff;min-width:32px;text-align:right}
+.tc4-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.tc4-table th{background:#21262d;color:#8b949e;padding:6px 8px;text-align:center;font-weight:600}
+.tc4-table td{padding:6px 8px;text-align:center;border-bottom:1px solid #21262d}
+.tc4-table tr.current td{background:#1f6feb15;font-weight:700;color:#58a6ff}
+.tc4-table tr:hover td{background:#1f2428}
+
+.stop-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.stop-table th{background:#21262d;color:#8b949e;padding:5px 8px;text-align:center;font-weight:600}
+.stop-table td{padding:5px 8px;text-align:center;border-bottom:1px solid #21262d;font-size:11px}
+.stop-table td.dim-yes{color:#3fb950;font-weight:600}
+.stop-table td.dim-no{color:#484f58}
+.stop-verdict{font-size:13px;font-weight:600;margin-top:10px;padding:8px 12px;border-radius:6px;background:#161b22;border:1px solid #21262d}
+.resonance-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.res-col{background:#0d1117;border:1px solid #21262d;border-radius:8px;padding:12px 16px}
+.res-col h4{font-size:12px;color:#8b949e;margin-bottom:8px}
+.res-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0}
+.res-row .val{font-weight:600}
 </style>
 </head>
 <body>
+<div class="nav">
+<a href="../">← 时间线</a>
+<a href="../../">🏠 索引</a>
+<a href="./" class="active">📊 可视化</a>
+<a href="report.html">📄 完整报告</a>
+</div>
 <div class="container">
-
 <div class="header">
-  <h1>厦门钨业（600549）多指数趋势量化分析</h1>
-  <p style="color:#94a3b8;margin:10px 0">分析日期：2026-06-04 | 数据日期：2026-06-04 | Sector Trend v2.3.1</p>
-  <div class="flex-row" style="justify-content:center">
-    <span class="badge badge-bull">趋势：B 弱趋势多头</span>
-    <span class="badge badge-blue">止跌：强</span>
-    <span class="badge badge-bull">共振：中共振偏多</span>
-    <span class="badge badge-warn">⚠️ 行业背离</span>
-  </div>
+<h1>有色·钨(884282) · 行业趋势推演</h1>
+<div class="meta">分析：2026-06-04 | 数据：2026-06-04（最近交易日） | 趋势标签：<span class="label-b">弱趋势多头</span> | 总分：55/100 | 行业排名：6/12</div>
 </div>
 
-<h2>核心指标</h2>
-<div class="summary-grid">
-  <div class="summary-card">
-    <div class="label">个股涨跌</div>
-    <div class="value bull">+6.20%</div>
-    <div class="label">收盘 63.73</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">趋势总分</div>
-    <div class="value" style="color:#3b82f6">55/100</div>
-    <div class="label">B — 弱趋势多头</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">止跌强度</div>
-    <div class="value stop-strong">强</div>
-    <div class="label">四维全满足</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">共振方向</div>
-    <div class="value bull">中共振偏多</div>
-    <div class="label">5偏多 / 0偏空</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">RSI14</div>
-    <div class="value bull">64.59</div>
-    <div class="label">动量偏强</div>
-  </div>
-  <div class="summary-card">
-    <div class="label">成交量比</div>
-    <div class="value" style="color:#f59e0b">1.26x</div>
-    <div class="label">放量突破</div>
-  </div>
+<!-- ===== 基础 KPI ===== -->
+<div class="kpi-row">
+<div class="kpi"><div class="label">趋势总分</div><div class="value" style="color:#3a7bd5">55</div><div class="label">/100 · 偏强</div></div>
+<div class="kpi"><div class="label">止跌强度</div><div class="value" style="color:#3fb950">强</div><div class="label">3/4维满足</div></div>
+<div class="kpi"><div class="label">行业排名</div><div class="value" style="color:#f0ad4e">6/12</div><div class="label">申万二级行业</div></div>
+<div class="kpi"><div class="label">波动率</div><div class="value" style="color:#f0ad4e">5.64%</div><div class="label">ATR14/Close</div></div>
+
 </div>
 
-<h2>五层评分</h2>
-<div class="chart-container">
-  <canvas id="scoreChart"></canvas>
+<div class="warning-box">⚠️ 风险警示：个股+6.2%逆势大涨(行业-2%)，高V_Ratio=1.26放量突破，MACD金叉 | 乖离率 D20：1612.0%</div>
+
+<!-- ===== 个股快照（多指数模式） ===== -->
+
+
+<!-- ===== 五层评分 + 止跌 ===== -->
+<div class="grid-2">
+<div class="card">
+<h3>📊 五层量化评分</h3>
+<canvas id="chartLayers"></canvas>
+</div>
+<div class="card">
+<h3>🛡️ 止跌四维评估</h3>
+<canvas id="chartStopLoss"></canvas>
+</div>
 </div>
 
-<table>
-  <tr><th>评分模块</th><th>得分</th><th>满分</th><th>得分率</th><th>说明</th></tr>
-  <tr>
-    <td style="color:#3b82f6">📐 方向层</td>
-    <td><b>5</b></td><td>40</td>
-    <td><div class="score-bar"><div class="score-bar-fill fill-dir" style="width:12.5%"></div></div>12.5%</td>
-    <td>MA20走平，短期修复中</td>
-  </tr>
-  <tr>
-    <td style="color:#22c55e">📈 动量层</td>
-    <td><b>30</b></td><td>30</td>
-    <td><div class="score-bar"><div class="score-bar-fill fill-mom" style="width:100%"></div></div>100%</td>
-    <td>RSI+MACD双强满分</td>
-  </tr>
-  <tr>
-    <td style="color:#f59e0b">🏗️ 结构层</td>
-    <td><b>10</b></td><td>20</td>
-    <td><div class="score-bar"><div class="score-bar-fill fill-stru" style="width:50%"></div></div>50%</td>
-    <td>创新高+部分HL确认</td>
-  </tr>
-  <tr>
-    <td style="color:#ef4444">📊 量价层</td>
-    <td><b>10</b></td><td>10</td>
-    <td><div class="score-bar"><div class="score-bar-fill fill-vol" style="width:100%"></div></div>100%</td>
-    <td>放量有效突破</td>
-  </tr>
-  <tr style="font-weight:700;background:#2d3a4f">
-    <td>🎯 总计</td>
-    <td style="font-size:1.2em;color:#3b82f6">55</td><td>100</td>
-    <td><div class="score-bar"><div class="score-bar-fill" style="width:55%;background:linear-gradient(90deg,#3b82f6,#22c55e)"></div></div>55%</td>
-    <td>B — 弱趋势多头</td>
-  </tr>
-</table>
+<div class="card" style="margin-top:20px"><h3>🔀 四周期独立趋势对比</h3><table class="cycle-table"><thead><tr><th>周期</th><th>涨幅</th><th>RSI轨迹</th><th>MACD轨迹</th><th>得分</th><th>趋势</th><th>vs统一</th></tr></thead><tbody><tr><td>超短(1-3个交易日)</td><td>+6.2%</td><td>80.99</td><td>+2.41</td><td style="font-weight:700">30</td><td><span class="label-a">强趋势多头</span></td><td class="cycle-agree">✅</td></tr>
+<tr><td>短线(3-10个交易日)</td><td>+18.5%</td><td>64.59→80.99</td><td>-1.2→+2.41</td><td style="font-weight:700">25</td><td><span class="label-a">强趋势多头</span></td><td class="cycle-warn">⚠️</td></tr>
+<tr><td>波段(10-30个交易日)</td><td>+9.3%</td><td>55.4→64.59</td><td>-2.1→+2.41</td><td style="font-weight:700">20</td><td><span class="label-b">弱趋势多头</span></td><td class="cycle-agree">✅</td></tr>
+<tr><td>中线(1-3个月)</td><td>-14.2%</td><td>48.5→64.59</td><td>-3.5→+2.41</td><td style="font-weight:700">15</td><td><span class="label-h">趋势反转早期</span></td><td class="cycle-warn">⚠️</td></tr></tbody></table><div class="cycle-divergence" style="color:#d2991d;background:#d2991d10;border-color:#d2991d33">⚠️ 单长周期分歧：1个长周期与统一标签反向，关注后续演变</div></div>
 
-<h2>指数生态全景</h2>
-<div class="chart-container">
-  <canvas id="ecosystemChart"></canvas>
+<!-- ===== 多指数共振区块 ===== -->
+
+
+<!-- ===== 多指数矩阵表格 ===== -->
+
+
+<!-- ===== 背离预警 ===== -->
+
+
+<!-- ===== 驱动归因 ===== -->
+
+
+<div class="card" style="margin-top:20px"><h3>🗺️ 标签×周期→交易模式 全量映射（当前行高亮）</h3><table class="tc4-table"><thead><tr><th>标签</th><th>超短(1-3个交易日)</th><th>短线(3-10个交易日)</th><th>波段(10-30个交易日)</th><th>中线(1-3个月)</th></tr></thead><tbody><tr><td style="font-weight:700">A（强趋势多头）</td><td>突破追涨</td><td>突破追涨/回踩</td><td>回踩/趋势延续</td><td>趋势延续</td></tr><tr class="current"><td style="font-weight:700">B（弱趋势多头）</td><td>动量跟随</td><td>回踩低吸</td><td>回踩低吸</td><td>趋势延续</td></tr><tr><td style="font-weight:700">C（震荡偏强）</td><td>箱体低吸</td><td>箱体/回踩低吸</td><td>回踩低吸</td><td>回踩低吸</td></tr><tr><td style="font-weight:700">D（震荡）</td><td>箱体高抛低吸</td><td>箱体高抛低吸</td><td>观望</td><td>观望</td></tr><tr><td style="font-weight:700">E（震荡偏弱）</td><td>观望</td><td>观望</td><td>观望</td><td>观望</td></tr><tr><td style="font-weight:700">F（弱趋势空头）</td><td>超跌反弹博弈</td><td>止跌确认观察</td><td>止跌确认观察</td><td>回避</td></tr><tr><td style="font-weight:700">G（强趋势空头）</td><td>回避</td><td>回避</td><td>回避</td><td>回避</td></tr><tr><td style="font-weight:700">H（趋势反转早期）</td><td>首阴低吸</td><td>首阴低吸/趋势线突破</td><td>趋势线突破</td><td>趋势线突破</td></tr></tbody></table><div style="font-size:11px;color:#8b949e;margin-top:6px">▶ 当前标签: <span class="label-b">弱趋势多头</span></div></div>
+<div class="card" style="margin-top:20px"><h3>🔀 日周共振面板</h3><div class="resonance-panel"><div class="res-col"><h4>📅 日线</h4><div class="res-row"><span>Close vs MA20</span><span class="val">63.73 vs 54.88</span></div><div class="res-row"><span>RSI14</span><span class="val">64.59</span></div><div class="res-row"><span>MACD柱</span><span class="val">2.4139</span></div><div class="res-row"><span>趋势标签</span><span class="val label-b">弱趋势多头</span></div></div><div class="res-col"><h4>📅 周线</h4><div class="res-row"><span>Close vs MA20</span><span class="val" style="color:#3fb950">63.73 > 59.12</span></div><div class="res-row"><span>RSI14</span><span class="val">63.66</span></div><div class="res-row"><span>MACD柱</span><span class="val" style="color:#d9534f">-2.0174</span></div><div class="res-row"><span>周线判定</span><span class="val">周线偏多</span></div></div></div></div>
+<div class="card" style="margin-top:20px"><h3>📈 趋势轨迹回测（15日）</h3><table class="stop-table"><thead><tr><th>指标</th><th>15日全量演变</th><th>近5日</th><th>判定</th></tr></thead><tbody><tr><td>标签迁移</td><td style="font-size:10px">F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → F(弱趋势空头) → E(震荡偏弱) → D(震荡) → C(震荡偏强) → C(震荡偏强) → B(弱趋势多头) → B(弱趋势多头)</td><td>D(震荡) → C(震荡偏强) → C(震荡偏强) → B(弱趋势多头) → B(弱趋势多头)</td><td>延续</td></tr><tr><td>总分趋势</td><td>-63 → 55</td><td>5 → 55</td><td>全量上升 / 近期上升</td></tr><tr><td>止跌变化</td><td style="font-size:10px">1→1→0→0→0→2→2→1→0→1→3→3→2→3→4/4</td><td>3→3→2→3→4/4</td><td>止跌改善</td></tr><tr><td>综合判定</td><td colspan="3" style="font-weight:700;color:#3fb950">趋势改善</td></tr></tbody></table></div>
+<div class="card" style="margin-top:20px"><h3>📈 止跌强度轨迹回测（15日）</h3><canvas id="chartStopTrajectory" style="max-height:260px"></canvas><table class="stop-table"><thead><tr><th>日期</th><th>A 价格</th><th>B 均线</th><th>C 动能</th><th>D 量能</th><th>合计</th></tr></thead><tbody><tr><td>05-15</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">1/4</td></tr><tr><td>05-18</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">1/4</td></tr><tr><td>05-19</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">0/4</td></tr><tr><td>05-20</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">0/4</td></tr><tr><td>05-21</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">0/4</td></tr><tr><td>05-22</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">2/4</td></tr><tr><td>05-25</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">2/4</td></tr><tr><td>05-26</td><td class="dim-no">❌</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">1/4</td></tr><tr><td>05-27</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">0/4</td></tr><tr><td>05-28</td><td class="dim-no">❌</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td class="dim-no">❌</td><td style="font-weight:700">1/4</td></tr><tr><td>05-29</td><td class="dim-no">❌</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td style="font-weight:700">3/4</td></tr><tr><td>06-01</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td style="font-weight:700">3/4</td></tr><tr><td>06-02</td><td class="dim-no">❌</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-no">❌</td><td style="font-weight:700">2/4</td></tr><tr><td>06-03</td><td class="dim-no">❌</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td style="font-weight:700">3/4</td></tr><tr><td>06-04</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td class="dim-yes">✅</td><td style="font-weight:700">4/4</td></tr></tbody></table><div class="stop-verdict" style="color:#3fb950">综合判定：止跌改善（1维→4维）|  | 传导路径：05-22(A+B) → 05-28(B) → 05-29(C+D) → 06-03(D) → 06-04(A)</div></div><script>var stopDimData={"dates": ["05-15", "05-18", "05-19", "05-20", "05-21", "05-22", "05-25", "05-26", "05-27", "05-28", "05-29", "06-01", "06-02", "06-03", "06-04"], "A": [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1], "B": [0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1], "C": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1], "D": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1], "total": [1, 1, 0, 0, 0, 2, 2, 1, 0, 1, 3, 3, 2, 3, 4]};if(document.getElementById("chartStopTrajectory")){new Chart(document.getElementById("chartStopTrajectory"),{type:"bar",data:{labels:stopDimData.dates,datasets:[{label:"A 价格",data:stopDimData.A,backgroundColor:"#d9534f",stack:"stop"},{label:"B 均线",data:stopDimData.B,backgroundColor:"#f0ad4e",stack:"stop"},{label:"C 动能",data:stopDimData.C,backgroundColor:"#58a6ff",stack:"stop"},{label:"D 量能",data:stopDimData.D,backgroundColor:"#3fb950",stack:"stop"},{label:"合计",type:"line",data:stopDimData.total,borderColor:"#f0f6fc",borderWidth:2,pointRadius:3,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#8b949e",font:{size:10}}}},scales:{x:{stacked:true,ticks:{color:"#484f58",font:{size:9}}},y:{stacked:true,max:4,ticks:{stepSize:1,color:"#484f58",font:{size:9}}}}}})}</script>
+<div class="card" style="margin-top:20px"><h3>📉 K线+均线 15日轨迹</h3><canvas id="chartTrajectory" style="max-height:300px"></canvas></div><div class="card" style="margin-top:20px"><h3>📊 四层评分演变</h3><canvas id="chartScoreEvolution" style="max-height:280px"></canvas></div><script>var trajData=[{"date": "2026-05-15", "close": 53.4, "open": 55.0, "high": 55.28, "low": 53.11, "change_pct": null, "_change_pct_calc": 0.0, "ma5": 56.93, "ma10": 58.02, "ma20": 59.56, "ma60": 61.03, "rsi14": 39.26, "macd_hist": -1.1753, "dif": -0.9106, "dea": -0.323, "atr14": 3.0676, "v_ratio": 0.8821, "d20": -0.1035, "amplitude": 3.94, "checks": {"close_gt_ma5": false, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": true, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": 0, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": true, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2572, "change_pct": 0.0, "range_20d_shrinking": false, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -25, "stru_score": 5, "vol_score": -3, "total_score": -63}, {"date": "2026-05-18", "close": 53.46, "open": 52.68, "high": 54.49, "low": 51.99, "change_pct": null, "_change_pct_calc": 0.11, "ma5": 55.74, "ma10": 57.42, "ma20": 59.42, "ma60": 60.98, "rsi14": 39.41, "macd_hist": -1.3775, "dif": -1.1839, "dea": -0.4952, "atr14": 3.0271, "v_ratio": 0.715, "d20": -0.1004, "amplitude": 4.68, "checks": {"close_gt_ma5": false, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": true, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": 0, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": true, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2843, "change_pct": 0.11, "range_20d_shrinking": false, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -25, "stru_score": 5, "vol_score": -3, "total_score": -63}, {"date": "2026-05-19", "close": 51.08, "open": 53.46, "high": 53.47, "low": 50.39, "change_pct": null, "_change_pct_calc": -4.45, "ma5": 54.39, "ma10": 56.75, "ma20": 58.88, "ma60": 60.87, "rsi14": 35.7, "macd_hist": -1.7267, "dif": -1.5744, "dea": -0.711, "atr14": 3.0308, "v_ratio": 0.9017, "d20": -0.1325, "amplitude": 5.76, "checks": {"close_gt_ma5": false, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": true, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": 0, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": false, "low_t1_ge_low_t2": false, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.3251, "change_pct": -4.45, "range_20d_shrinking": false, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -25, "stru_score": 0, "vol_score": -5, "total_score": -70}, {"date": "2026-05-20", "close": 50.89, "open": 50.3, "high": 51.73, "low": 49.3, "change_pct": null, "_change_pct_calc": -0.37, "ma5": 52.79, "ma10": 55.86, "ma20": 58.29, "ma60": 60.69, "rsi14": 35.41, "macd_hist": -1.8664, "dif": -1.8775, "dea": -0.9443, "atr14": 2.9879, "v_ratio": 1.0496, "d20": -0.1269, "amplitude": 4.76, "checks": {"close_gt_ma5": false, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": true, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": 0, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": false, "low_t1_ge_low_t2": false, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": true, "range_20d": 0.3544, "change_pct": -0.37, "range_20d_shrinking": false, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -25, "stru_score": 0, "vol_score": 0, "total_score": -65}, {"date": "2026-05-21", "close": 50.16, "open": 51.68, "high": 53.1, "low": 50.01, "change_pct": null, "_change_pct_calc": -1.43, "ma5": 51.8, "ma10": 54.9, "ma20": 57.61, "ma60": 60.48, "rsi14": 34.27, "macd_hist": -1.932, "dif": -2.1518, "dea": -1.1858, "atr14": 2.9952, "v_ratio": 1.0563, "d20": -0.1293, "amplitude": 6.07, "checks": {"close_gt_ma5": false, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": true, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": 0, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": false, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.3544, "change_pct": -1.43, "range_20d_shrinking": false, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -25, "stru_score": 0, "vol_score": 0, "total_score": -65}, {"date": "2026-05-22", "close": 52.04, "open": 50.19, "high": 52.56, "low": 50.19, "change_pct": null, "_change_pct_calc": 3.75, "ma5": 51.53, "ma10": 54.23, "ma20": 57.01, "ma60": 60.35, "rsi14": 39.66, "macd_hist": -1.6103, "dif": -2.1923, "dea": -1.3871, "atr14": 2.9527, "v_ratio": 1.0201, "d20": -0.0872, "amplitude": 4.72, "checks": {"close_gt_ma5": true, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.042802699617218484, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.3544, "change_pct": 3.75, "range_20d_shrinking": false, "range_20d_expanding": true}, "dir_score": -40, "mom_score": -25, "stru_score": 0, "vol_score": 0, "total_score": -65}, {"date": "2026-05-25", "close": 51.9, "open": 53.08, "high": 53.35, "low": 51.45, "change_pct": null, "_change_pct_calc": -0.27, "ma5": 51.21, "ma10": 53.48, "ma20": 56.29, "ma60": 60.22, "rsi14": 39.4, "macd_hist": -1.3169, "dif": -2.2101, "dea": -1.5517, "atr14": 2.8775, "v_ratio": 0.8083, "d20": -0.0781, "amplitude": 3.65, "checks": {"close_gt_ma5": true, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.05267187776085638, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": true, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": true, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": true, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.3469, "change_pct": -0.27, "range_20d_shrinking": false, "range_20d_expanding": true}, "dir_score": -40, "mom_score": -25, "stru_score": 5, "vol_score": -3, "total_score": -63}, {"date": "2026-05-26", "close": 53.95, "open": 51.1, "high": 53.99, "low": 50.9, "change_pct": null, "_change_pct_calc": 3.95, "ma5": 51.79, "ma10": 53.09, "ma20": 55.86, "ma60": 60.05, "rsi14": 45.06, "macd_hist": -0.7739, "dif": -2.0354, "dea": -1.6485, "atr14": 2.8927, "v_ratio": 1.2322, "d20": -0.0342, "amplitude": 5.95, "checks": {"close_gt_ma5": true, "close_gt_ma10": true, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.05137175317783115, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": false, "rsi14_le_40": false, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": true, "v_ratio_le_0_9": false, "low_t_ge_low_t1": false, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": true, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2708, "change_pct": 3.95, "range_20d_shrinking": true, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -10, "stru_score": 5, "vol_score": -10, "total_score": -55}, {"date": "2026-05-27", "close": 51.56, "open": 54.0, "high": 54.22, "low": 51.15, "change_pct": null, "_change_pct_calc": -4.43, "ma5": 51.92, "ma10": 52.36, "ma20": 55.35, "ma60": 59.85, "rsi14": 40.33, "macd_hist": -0.6681, "dif": -2.066, "dea": -1.732, "atr14": 2.9053, "v_ratio": 0.9747, "d20": -0.0684, "amplitude": 5.69, "checks": {"close_gt_ma5": false, "close_gt_ma10": false, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": false, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": true, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.05040618324998074, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": false, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": false, "low_t2_ge_low_t3": true, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2339, "change_pct": -4.43, "range_20d_shrinking": true, "range_20d_expanding": false}, "dir_score": -40, "mom_score": -20, "stru_score": 5, "vol_score": -5, "total_score": -60}, {"date": "2026-05-28", "close": 52.4, "open": 51.24, "high": 53.15, "low": 50.4, "change_pct": null, "_change_pct_calc": 1.63, "ma5": 52.37, "ma10": 52.08, "ma20": 55.13, "ma60": 59.55, "rsi14": 42.61, "macd_hist": -0.4279, "dif": -1.9994, "dea": -1.7854, "atr14": 2.8942, "v_ratio": 0.8629, "d20": -0.0495, "amplitude": 5.33, "checks": {"close_gt_ma5": true, "close_gt_ma10": true, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": true, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": false, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.043098660001388546, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": false, "macd_hist_gt_0": false, "macd_hist_lt_0": true, "dif_gt_dea": false, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": true, "low_t_ge_low_t1": false, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2339, "change_pct": 1.63, "range_20d_shrinking": true, "range_20d_expanding": false}, "dir_score": 0, "mom_score": -20, "stru_score": 5, "vol_score": -3, "total_score": -18}, {"date": "2026-05-29", "close": 54.37, "open": 53.21, "high": 56.17, "low": 51.3, "change_pct": null, "_change_pct_calc": 3.76, "ma5": 52.84, "ma10": 52.18, "ma20": 55.1, "ma60": 59.21, "rsi14": 47.66, "macd_hist": 0.0291, "dif": -1.7673, "dea": -1.7818, "atr14": 3.0354, "v_ratio": 1.6391, "d20": -0.0132, "amplitude": 9.29, "checks": {"close_gt_ma5": true, "close_gt_ma10": true, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": true, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": false, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.03359671662471818, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": false, "rsi14_le_40": false, "macd_hist_gt_0": true, "macd_hist_lt_0": false, "dif_gt_dea": true, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": true, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": false, "low_t2_ge_low_t3": true, "high_t_ge_high_10d_max": true, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": true, "is_long_lower_shadow": true, "range_20d": 0.2339, "change_pct": 3.76, "range_20d_shrinking": true, "range_20d_expanding": false}, "dir_score": 0, "mom_score": 0, "stru_score": 15, "vol_score": -10, "total_score": 5}, {"date": "2026-06-01", "close": 52.85, "open": 55.56, "high": 57.07, "low": 52.75, "change_pct": null, "_change_pct_calc": -2.8, "ma5": 53.03, "ma10": 52.12, "ma20": 54.77, "ma60": 58.83, "rsi14": 44.41, "macd_hist": 0.1525, "dif": -1.6865, "dea": -1.7628, "atr14": 3.1271, "v_ratio": 1.0471, "d20": -0.035, "amplitude": 7.95, "checks": {"close_gt_ma5": false, "close_gt_ma10": true, "close_gt_ma20": false, "close_gt_ma60": false, "ma5_gt_ma10": true, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": false, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.027116325751183234, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": true, "rsi14_le_40": false, "macd_hist_gt_0": true, "macd_hist_lt_0": false, "dif_gt_dea": true, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": true, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2339, "change_pct": -2.8, "range_20d_shrinking": true, "range_20d_expanding": false}, "dir_score": 0, "mom_score": 0, "stru_score": 20, "vol_score": 0, "total_score": 20}, {"date": "2026-06-02", "close": 55.81, "open": 53.0, "high": 56.18, "low": 51.47, "change_pct": null, "_change_pct_calc": 5.6, "ma5": 53.4, "ma10": 52.59, "ma20": 54.67, "ma60": 58.45, "rsi14": 51.36, "macd_hist": 0.6317, "dif": -1.3679, "dea": -1.6838, "atr14": 3.2402, "v_ratio": 1.1615, "d20": 0.0209, "amplitude": 8.91, "checks": {"close_gt_ma5": true, "close_gt_ma10": true, "close_gt_ma20": true, "close_gt_ma60": false, "ma5_gt_ma10": true, "ma5_gt_ma20": false, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": false, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": false, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.021303448831443132, "ma10_rising": false, "rsi14_ge_60": false, "rsi14_ge_55": false, "rsi14_le_45": false, "rsi14_le_40": false, "macd_hist_gt_0": true, "macd_hist_lt_0": false, "dif_gt_dea": true, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": false, "v_ratio_le_0_9": false, "low_t_ge_low_t1": false, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": true, "high_t_ge_high_10d_max": false, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": false, "is_long_lower_shadow": false, "range_20d": 0.2339, "change_pct": 5.6, "range_20d_shrinking": true, "range_20d_expanding": false}, "dir_score": 5, "mom_score": 10, "stru_score": 5, "vol_score": 0, "total_score": 20}, {"date": "2026-06-03", "close": 60.01, "open": 55.85, "high": 61.3, "low": 55.58, "change_pct": null, "_change_pct_calc": 7.53, "ma5": 55.09, "ma10": 53.5, "ma20": 54.68, "ma60": 58.2, "rsi14": 59.17, "macd_hist": 1.4658, "dif": -0.7677, "dea": -1.5006, "atr14": 3.4173, "v_ratio": 1.5641, "d20": 0.0974, "amplitude": 10.25, "checks": {"close_gt_ma5": true, "close_gt_ma10": true, "close_gt_ma20": true, "close_gt_ma60": true, "ma5_gt_ma10": true, "ma5_gt_ma20": true, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": false, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": true, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.011996711744672421, "ma10_rising": true, "rsi14_ge_60": false, "rsi14_ge_55": true, "rsi14_le_45": false, "rsi14_le_40": false, "macd_hist_gt_0": true, "macd_hist_lt_0": false, "dif_gt_dea": true, "dif_gt_0": false, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": true, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": false, "low_t2_ge_low_t3": true, "high_t_ge_high_10d_max": true, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": true, "is_long_lower_shadow": false, "range_20d": 0.2434, "change_pct": 7.53, "range_20d_shrinking": false, "range_20d_expanding": false}, "dir_score": 5, "mom_score": 25, "stru_score": 10, "vol_score": 10, "total_score": 50}, {"date": "2026-06-04", "close": 63.73, "open": 60.02, "high": 63.98, "low": 58.1, "change_pct": null, "_change_pct_calc": 6.2, "ma5": 57.35, "ma10": 54.86, "ma20": 54.88, "ma60": 58.03, "rsi14": 64.59, "macd_hist": 2.4139, "dif": 0.0081, "dea": -1.1988, "atr14": 3.5932, "v_ratio": 1.2603, "d20": 0.1612, "amplitude": 9.8, "checks": {"close_gt_ma5": true, "close_gt_ma10": true, "close_gt_ma20": true, "close_gt_ma60": true, "ma5_gt_ma10": true, "ma5_gt_ma20": true, "ma10_gt_ma20": false, "is_perfect_bullish_alignment": false, "is_perfect_bearish_alignment": false, "prev_is_perfect_bullish": false, "prev_close_gt_ma20": true, "ma20_rising": false, "ma20_flat": false, "ma20_accelerating": false, "ma20_decelerating": false, "_ma20_slope": -0.004498539788496028, "ma10_rising": true, "rsi14_ge_60": true, "rsi14_ge_55": true, "rsi14_le_45": false, "rsi14_le_40": false, "macd_hist_gt_0": true, "macd_hist_lt_0": false, "dif_gt_dea": true, "dif_gt_0": true, "dea_gt_0": false, "close_gt_high_20d": false, "v_ratio_ge_1_2": true, "v_ratio_le_0_9": false, "low_t_ge_low_t1": true, "low_t1_ge_low_t2": true, "low_t2_ge_low_t3": false, "high_t_ge_high_10d_max": true, "high_t_ge_high_20d_max": true, "has_volume_expand_yang_in_3": true, "is_long_lower_shadow": false, "range_20d": 0.2978, "change_pct": 6.2, "range_20d_shrinking": false, "range_20d_expanding": true}, "dir_score": 5, "mom_score": 30, "stru_score": 10, "vol_score": 10, "total_score": 55}];if(document.getElementById("chartTrajectory")){new Chart(document.getElementById("chartTrajectory"),{type:"line",data:{labels:trajData.map(function(d){return d.date.slice(5)}),datasets:[{label:"Close",data:trajData.map(function(d){return d.close}),borderColor:"#f0f6fc",borderWidth:2,tension:0.1,pointRadius:3},{label:"MA5",data:trajData.map(function(d){return d.ma5}),borderColor:"#d9534f",borderWidth:1,tension:0.1,pointRadius:0},{label:"MA10",data:trajData.map(function(d){return d.ma10}),borderColor:"#f0ad4e",borderWidth:1,tension:0.1,pointRadius:0},{label:"MA20",data:trajData.map(function(d){return d.ma20}),borderColor:"#3fb950",borderWidth:1,tension:0.1,pointRadius:0},{label:"MA60",data:trajData.map(function(d){return d.ma60}),borderColor:"#58a6ff",borderWidth:1,tension:0.1,pointRadius:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#8b949e",font:{size:10}}}},scales:{x:{ticks:{color:"#484f58",font:{size:9}}},y:{ticks:{color:"#484f58",font:{size:9}}}}}})}if(document.getElementById("chartScoreEvolution")){new Chart(document.getElementById("chartScoreEvolution"),{type:"bar",data:{labels:trajData.map(function(d){return d.date.slice(5)}),datasets:[{label:"方向",data:trajData.map(function(d){return d.dir_score||0}),backgroundColor:"#58a6ff",stack:"score"},{label:"动量",data:trajData.map(function(d){return d.mom_score||0}),backgroundColor:"#3fb950",stack:"score"},{label:"结构",data:trajData.map(function(d){return d.stru_score||0}),backgroundColor:"#f0ad4e",stack:"score"},{label:"量价",data:trajData.map(function(d){return d.vol_score||0}),backgroundColor:"#d9534f",stack:"score"},{label:"总分",type:"line",data:trajData.map(function(d){return d.total_score||0}),borderColor:"#f0f6fc",borderWidth:2,pointRadius:2,fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:"#8b949e",font:{size:10}}}},scales:{x:{stacked:true,ticks:{color:"#484f58",font:{size:9}}},y:{stacked:true,ticks:{color:"#484f58",font:{size:9}}}}}})}</script>
 </div>
-
-<h3>核心概念层（r ≥ 0.70）</h3>
-<table>
-  <tr><th>指数</th><th>类型</th><th>相关性</th><th>涨跌</th><th>RSI</th><th>得分</th><th>标签</th><th>止跌</th></tr>
-  <tr>
-    <td><b>有色·钨</b></td><td>884xxx概念</td><td>0.90</td><td class="bear">-1.31%</td><td>56.5</td><td>60</td><td><span class="tag tag-b">B</span></td><td class="stop-strong">强</td>
-  </tr>
-  <tr>
-    <td>沪深300</td><td>基准</td><td>0.90</td><td class="bear">-0.69%</td><td>54.9</td><td>53</td><td><span class="tag tag-b">B</span></td><td class="stop-mid">中</td>
-  </tr>
-  <tr>
-    <td>小金属</td><td>SW行业</td><td>0.88</td><td class="bear">-2.00%</td><td>49.2</td><td>43</td><td><span class="tag tag-b">B</span></td><td class="stop-strong">强</td>
-  </tr>
-  <tr>
-    <td>稀土永磁</td><td>CLS概念</td><td>0.88</td><td class="bear">-1.29%</td><td>48.2</td><td>43</td><td><span class="tag tag-b">B</span></td><td class="stop-strong">强</td>
-  </tr>
-  <tr>
-    <td>小金属</td><td>THS行业</td><td>0.85</td><td class="bear">-0.99%</td><td>51.1</td><td>40</td><td><span class="tag tag-b">B</span></td><td class="stop-strong">强</td>
-  </tr>
-</table>
-
-<h2>背离预警</h2>
-<div class="alert-box">
-  <b>⚠️ 行业跌个股涨 — 个股独立利好</b><br>
-  SW小金属跌 <b>-2.00%</b>，厦门钨业涨 <b class="bull">+6.20%</b>，差幅 <b>+8.20pp</b><br>
-  全部11个关联指数当日均下跌，个股逆势放量突破。关注独立逻辑可持续性。
-</div>
-
-<h2>共振 & 驱动归因</h2>
-<div class="two-col">
-  <div class="chart-container">
-    <canvas id="resonanceChart"></canvas>
-  </div>
-  <div class="chart-container">
-    <canvas id="driverChart"></canvas>
-  </div>
-</div>
-
-<table>
-  <tr><th>驱动排名</th><th>概念</th><th>相关度</th><th>标签</th><th>得分</th><th>作用方向</th></tr>
-  <tr><td>#1</td><td>有色·钨（钨指数）</td><td>0.90</td><td><span class="tag tag-b">B</span></td><td>60</td><td class="bull">核心驱动</td></tr>
-  <tr><td>#2</td><td>沪深300（市场β）</td><td>0.90</td><td><span class="tag tag-b">B</span></td><td>53</td><td class="neutral">市场共振</td></tr>
-  <tr><td>#3</td><td>小金属（SW行业）</td><td>0.88</td><td><span class="tag tag-b">B</span></td><td>43</td><td class="bear">行业拖累</td></tr>
-  <tr><td>#4</td><td>稀土永磁</td><td>0.88</td><td><span class="tag tag-b">B</span></td><td>43</td><td class="neutral">次核心</td></tr>
-  <tr><td>#5</td><td>小金属（THS行业）</td><td>0.85</td><td><span class="tag tag-b">B</span></td><td>40</td><td class="neutral">行业对标</td></tr>
-</table>
-
-<h2>结论 & 配置建议</h2>
-<div class="conclusion-box">
-  <h3 style="color:#3b82f6;margin-bottom:10px">✅ 超配 — 共振做多</h3>
-  <table>
-    <tr><th>维度</th><th>信号</th><th>强度</th></tr>
-    <tr><td>日线趋势</td><td>B（弱趋势多头）总分55</td><td>⭐⭐⭐</td></tr>
-    <tr><td>周线共振</td><td>周线偏多 ✅</td><td>⭐⭐⭐</td></tr>
-    <tr><td>止跌信号</td><td>强（四维全满足）</td><td>⭐⭐⭐</td></tr>
-    <tr><td>核心概念</td><td>5/5全部偏多</td><td>⭐⭐⭐</td></tr>
-    <tr><td>独立α</td><td>⚠️ 行业跌+个股涨背离</td><td>⚠️</td></tr>
-    <tr><td>估值水位</td><td>PE/PB >84%分位（偏高）</td><td>⚠️</td></tr>
-  </table>
-</div>
-
 <div class="footer">
-  <p>本报告由 Sector Trend v2.3.1 多指数趋势量化分析系统生成</p>
-  <p>⚠️ 免责声明：分析结论仅供参考，不构成投资建议</p>
+<p>Sector Trend System v2.1 · 基于 SKILL.md 单一权威源</p>
+<p style="margin-top:4px"><a href="report.html">📄 MD 报告查看器</a> · <a href="有色·钨_20260604_sector_trend.md">📝 Markdown 原文</a> · <a href="https://github.com/zhiqunlin/sector-trend-reports">GitHub 仓库</a></p>
+<p style="margin-top:8px;color:#d9534f">⚠️ 不构成投资建议 · 市场有风险，投资须谨慎</p>
 </div>
-
-</div>
-
 <script>
-// 五层评分柱状图
-const ctx1 = document.getElementById('scoreChart').getContext('2d');
-new Chart(ctx1, {
-  type: 'bar',
-  data: {
-    labels: ['方向层', '动量层', '结构层', '量价层'],
-    datasets: [{
-      label: '实际得分',
-      data: [5, 30, 10, 10],
-      backgroundColor: ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444'],
-      borderRadius: 6
-    }, {
-      label: '满分',
-      data: [40, 30, 20, 10],
-      backgroundColor: '#334155',
-      borderRadius: 6
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { labels: { color: '#94a3b8' } },
-      title: { display: true, text: '五层量化评分', color: '#e2e8f0', font: { size: 16 } }
+const chartData = {
+    layers: {
+        labels: ['方向分(40)', '动量分(30)', '结构分(20)', '量价分(10)'],
+        max: [40, 30, 20, 10],
+        actual: [5, 30, 10, 10]
     },
-    scales: {
-      x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
-      y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' }, max: 45 }
+    stopLoss: {
+        labels: ['A.价格', 'B.均线', 'C.动能', 'D.量能'],
+        values: [1, 1, 1, 0]
     }
-  }
+};
+
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#21262d';
+Chart.defaults.font.family = '"Microsoft YaHei","PingFang SC",sans-serif';
+
+// ===== 1. Five-Layer Score Chart =====
+new Chart(document.getElementById('chartLayers'), {
+    type: 'bar',
+    data: {
+        labels: chartData.layers.labels,
+        datasets: [
+            {
+                label: '满分',
+                data: chartData.layers.max,
+                backgroundColor: '#21262d',
+                borderColor: '#30363d',
+                borderWidth: 1,
+                barPercentage: 0.6
+            },
+            {
+                label: '实际得分',
+                data: chartData.layers.actual,
+                backgroundColor: ['#00d2ff','#3a7bd5','#f0ad4e','#3fb950'],
+                barPercentage: 0.6
+            }
+        ]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { max: 45, grid: { color: '#21262d' } },
+            y: { grid: { display: false } }
+        }
+    }
 });
 
-// 指数生态全景
-const ctx2 = document.getElementById('ecosystemChart').getContext('2d');
-new Chart(ctx2, {
-  type: 'bar',
-  data: {
-    labels: ['有色·钨','沪深300','小金属SW','稀土永磁','小金属THS','新能源汽车','核电','锂电池','石墨烯','机器人','上证'],
-    datasets: [{
-      label: '趋势得分',
-      data: [60,53,43,43,40,35,35,35,35,35,35],
-      backgroundColor: ctx => {
-        const v = ctx.raw;
-        return v >= 50 ? '#22c55e80' : v >= 40 ? '#3b82f680' : '#94a3b880';
-      },
-      borderRadius: 6
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { labels: { color: '#94a3b8' } },
-      title: { display: true, text: '指数趋势得分对比', color: '#e2e8f0', font: { size: 16 } }
+// ===== 2. Stop-Loss Radar =====
+var allZeroRadar = chartData.stopLoss.values.every(function(v){return v === 0});
+new Chart(document.getElementById('chartStopLoss'), {
+    type: 'radar',
+    data: {
+        labels: chartData.stopLoss.labels,
+        datasets: [{
+            label: '止跌四维',
+            data: chartData.stopLoss.values,
+            backgroundColor: 'rgba(63,185,80,0.15)',
+            borderColor: '#3fb950',
+            borderWidth: 2,
+            pointBackgroundColor: chartData.stopLoss.values.map(v => v > 0 ? '#3fb950' : '#d9534f'),
+            pointRadius: 5
+        }]
     },
-    scales: {
-      x: { ticks: { color: '#94a3b8', maxRotation: 45 }, grid: { color: '#334155' } },
-      y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' }, max: 70 }
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            r: {
+                min: 0, max: 1,
+                grid: { color: '#21262d' },
+                angleLines: { color: '#21262d' },
+                pointLabels: { color: '#8b949e', font: { size: 11 } },
+                ticks: { display: false }
+            }
+        },
+        plugins: allZeroRadar ? [{
+            id: 'zeroNote',
+            afterDraw: function(chart) {
+                var ctx = chart.ctx; ctx.save();
+                ctx.font = '13px "Microsoft YaHei",sans-serif';
+                ctx.fillStyle = '#d2991d'; ctx.textAlign = 'center';
+                ctx.fillText('\u26a0 0/4\u7ef4\u6ee1\u8db3\uff0c\u65e0\u6b62\u8dcc\u4fe1\u53f7', chart.width/2, chart.height/2);
+                ctx.restore();
+            }
+        }] : []
     }
-  }
 });
 
-// 共振饼图
-const ctx3 = document.getElementById('resonanceChart').getContext('2d');
-new Chart(ctx3, {
-  type: 'doughnut',
-  data: {
-    labels: ['偏多(5)', '中性(6)', '偏空(0)'],
-    datasets: [{
-      data: [5, 6, 0],
-      backgroundColor: ['#ef4444', '#94a3b8', '#22c55e'],
-      borderColor: '#1e293b',
-      borderWidth: 2
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { labels: { color: '#94a3b8' } },
-      title: { display: true, text: '共振方向分布', color: '#e2e8f0', font: { size: 14 } }
-    }
-  }
-});
+// ===== 3. 共振方向图（多指数模式） =====
 
-// 驱动归因
-const ctx4 = document.getElementById('driverChart').getContext('2d');
-new Chart(ctx4, {
-  type: 'bar',
-  indexAxis: 'y',
-  data: {
-    labels: ['有色·钨', '沪深300', '小金属SW', '稀土永磁', '小金属THS'],
-    datasets: [{
-      label: '相关性',
-      data: [0.90, 0.90, 0.88, 0.88, 0.85],
-      backgroundColor: '#3b82f680',
-      borderRadius: 4
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { labels: { color: '#94a3b8' } },
-      title: { display: true, text: 'Top 5 驱动归因', color: '#e2e8f0', font: { size: 14 } }
-    },
-    scales: {
-      x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' }, max: 1 },
-      y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }
-    }
-  }
-});
 </script>
 </body>
 </html>
