@@ -56,7 +56,7 @@ const resp=await fetch('厦门钨业_20260604_sector_trend.md');
 if(!resp.ok)throw new Error('Failed to load');
 const md=await resp.text();
 document.getElementById('loading').style.display='none';
-document.getElementById('content').innerHTML=marked.parse(md);
+document.getElementById('content').innerHTML=marked.parse(md,{gfm:true,breaks:false});
 }catch(e){
 document.getElementById('loading').innerHTML='<p style="color:#f85149">⚠️ 报告加载失败</p>';
 }
