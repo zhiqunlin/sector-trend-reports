@@ -2,167 +2,380 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>天赐材料(002709) - 多指数趋势量化分析 v2.4.0</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>天赐材料(002709) 多指数共振分析 · 2026-06-05</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI','Microsoft YaHei',sans-serif;background:#0f1923;color:#e0e0e0;line-height:1.6}
-.nav{position:sticky;top:0;background:rgba(15,25,35,0.95);backdrop-filter:blur(10px);padding:12px 24px;border-bottom:1px solid #1e3a5f;z-index:100;display:flex;gap:20px;flex-wrap:wrap}
-.nav a{color:#7eb8da;text-decoration:none;font-size:14px;padding:6px 12px;border-radius:4px;transition:all .2s}
-.nav a:hover{background:#1e3a5f;color:#fff}
-.container{max-width:1000px;margin:0 auto;padding:24px}
-.header{text-align:center;padding:40px 0;background:linear-gradient(135deg,#0f1923,#1a3a5c)}
-.header h1{font-size:32px;color:#fff;margin-bottom:8px}
-.header .sub{color:#7eb8da;font-size:16px}
-.version{display:inline-block;background:#1e3a5f;color:#7eb8da;padding:2px 10px;border-radius:10px;font-size:12px;margin-left:8px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:24px 0}
-.card{background:#152535;border-radius:8px;padding:20px;border:1px solid #1e3a5f}
-.card h3{color:#7eb8da;font-size:15px;margin-bottom:12px;border-bottom:1px solid #1e3a5f;padding-bottom:8px}
-.kpi{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(30,58,95,0.3)}.kpi:last-child{border:none}
-.kpi .label{color:#8a9bb5}
-.kpi .value{font-weight:600;font-variant-numeric:tabular-nums}
-.positive{color:#ef5350}.negative{color:#4caf50}.neutral{color:#ffa726}.bear{color:#f44336}.bull{color:#66bb6a}
-.score-bar{height:24px;background:#1e3a5f;border-radius:12px;overflow:hidden;margin:8px 0}
-.score-fill{height:100%;border-radius:12px;transition:width .5s}
-.section{margin:32px 0}
-.section h2{color:#7eb8da;font-size:22px;margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid #1e3a5f}
-table{width:100%;border-collapse:collapse;margin:12px 0}
-th{background:#1a3050;color:#7eb8da;padding:10px 12px;text-align:left;font-weight:500;font-size:13px}
-td{padding:8px 12px;border-bottom:1px solid rgba(30,58,95,0.3);font-size:13px}
-tr:hover td{background:rgba(30,58,95,0.2)}
-.alert{padding:12px 16px;border-radius:6px;margin:8px 0;font-size:14px}
-.alert-danger{background:rgba(244,67,54,0.15);border:1px solid rgba(244,67,54,0.3);color:#ef5350}
-.alert-warn{background:rgba(255,167,38,0.15);border:1px solid rgba(255,167,38,0.3);color:#ffa726}
-.alert-info{background:rgba(126,184,218,0.15);border:1px solid rgba(126,184,218,0.3);color:#7eb8da}
-.alert-success{background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.3);color:#66bb6a}
-.footer{padding:24px;text-align:center;border-top:1px solid #1e3a5f;margin-top:40px}
-.footer a{color:#7eb8da;text-decoration:none;margin:0 12px}
-.footer a:hover{color:#fff}
-.chart-container{background:#152535;border-radius:8px;padding:20px;border:1px solid #1e3a5f;margin:16px 0}
-.tdx-badge{display:inline-block;background:#7e57c2;color:#fff;padding:1px 8px;border-radius:8px;font-size:11px;margin-left:4px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;line-height:1.6;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{text-align:center;padding:30px 0;border-bottom:1px solid #30363d;margin-bottom:30px}
+.header h1{font-size:2.2em;color:#f0f6fc;margin-bottom:8px}
+.header .meta{color:#8b949e;font-size:.9em}
+.header .price-row{font-size:1.8em;color:#f85149;margin-top:10px}
+.header .price-row span.green{color:#3fb950}
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:30px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px}
+.card.warn{border-color:#d29922}
+.card.danger{border-color:#f85149}
+.card.good{border-color:#3fb950}
+.card h3{font-size:.85em;color:#8b949e;text-transform:uppercase;margin-bottom:6px}
+.card .big{font-size:2.2em;font-weight:700;color:#f0f6fc}
+.card .big.green{color:#3fb950}
+.card .big.red{color:#f85149}
+.card .big.yellow{color:#d29922}
+.card .sub{font-size:.85em;color:#8b949e;margin-top:4px}
+.card .detail{font-size:.85em;margin-top:8px;color:#8b949e}
+.section{margin-bottom:30px}
+.section h2{font-size:1.4em;color:#f0f6fc;border-bottom:1px solid #30363d;padding-bottom:8px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9em}
+th{background:#1c2433;color:#8b949e;padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid #30363d}
+td{padding:10px 12px;border-bottom:1px solid #21262d}
+tr:hover{background:#1c2433}
+.label{display:inline-block;padding:3px 8px;border-radius:4px;font-size:.8em;font-weight:600}
+.label-a{background:#1a3a1a;color:#3fb950}
+.label-b{background:#1a3a1a;color:#56d364}
+.label-c{background:#2a2a1a;color:#d29922}
+.label-d{background:#2a2a2a;color:#8b949e}
+.label-e{background:#3a1a1a;color:#f0883e}
+.label-f{background:#3a1a1a;color:#f85149}
+.label-g{background:#3a0a0a;color:#ff3b30}
+.label-h{background:#1a2a3a;color:#58a6ff}
+.score-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:8px 0;background:#21262d}
+.score-bar .seg1{background:#3fb950}
+.score-bar .seg2{background:#56d364}
+.score-bar .seg3{background:#d29922}
+.score-bar .seg4{background:#f85149}
+.score-bar .seg0{background:#30363d}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+.kpi-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #21262d}
+.kpi-row:last-child{border-bottom:none}
+.kpi-label{color:#8b949e}
+.kpi-value{font-weight:600;color:#f0f6fc}
+.kpi-value.green{color:#3fb950}
+.kpi-value.red{color:#f85149}
+.chapter-divider{margin:20px 0;border-top:2px solid #30363d}
+.alert-box{background:#1a1a2a;border-left:4px solid #d29922;padding:12px 16px;border-radius:4px;margin:12px 0;font-size:.9em}
+.alert-box.danger{border-left-color:#f85149;background:#2a1a1a}
+.alert-box.good{border-left-color:#3fb950;background:#1a2a1a}
+.alert-box strong{color:#d29922}
+.alert-box.danger strong{color:#f85149}
+.alert-box.good strong{color:#3fb950}
+.sentiment-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.8em}
+.sentiment-pos{background:#1a3a1a;color:#3fb950}
+.sentiment-neg{background:#3a1a1a;color:#f85149}
+.sentiment-neu{background:#2a2a2a;color:#8b949e}
+.verdict-box{background:linear-gradient(135deg,#1c2433,#161b22);border:2px solid #30363d;border-radius:10px;padding:24px;margin:20px 0}
+.verdict-box h3{color:#58a6ff;margin-bottom:12px}
+.verdict-box .verdict-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #21262d;flex-wrap:wrap}
+.verdict-box .verdict-row:last-child{border-bottom:none}
+.verdict-box .v-label{color:#8b949e;min-width:140px}
+.verdict-box .v-value{font-weight:700;color:#f0f6fc}
+.footer{text-align:center;padding:30px 0;color:#484f58;font-size:.8em;border-top:1px solid #30363d;margin-top:30px}
+.resonance-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0;background:#21262d}
+.resonance-bar .bull{background:#3fb950}
+.resonance-bar .neutral{background:#484f58}
+.resonance-bar .bear{background:#f85149}
 </style>
 </head>
 <body>
-<div class="nav">
-<a href="../">← 时间线</a>
-<a href="../../">🏠 索引</a>
-<a href="./">📊 可视化</a>
-<a href="report.html">📄 完整报告</a>
-</div>
-<div class="header">
-<h1>天赐材料 (002709)<span class="version">v2.4.0</span></h1>
-<p class="sub">多指数趋势量化分析 · 行业：电力设备·电池(801737) · 2026-06-05</p>
-</div>
 <div class="container">
-<div class="cards">
-<div class="card">
-<h3>📈 个股趋势诊断</h3>
-<div class="kpi"><span class="label">收盘价</span><span class="value">¥49.40</span></div>
-<div class="kpi"><span class="label">涨跌幅</span><span class="value negative">-3.70%</span></div>
-<div class="kpi"><span class="label">五层评分</span><span class="value bear">-30 / 100</span></div>
-<div class="kpi"><span class="label">趋势标签</span><span class="value neutral">C 震荡偏强 🐂</span></div>
-<div class="kpi"><span class="label">止跌强度</span><span class="value">弱 (1维: 量能)</span></div>
-<div class="kpi"><span class="label">日周共振</span><span class="value">日弱周强 👀</span></div>
-</div>
-<div class="card">
-<h3>🔗 多指数共振</h3>
-<div class="kpi"><span class="label">共振评分</span><span class="value">49/100</span></div>
-<div class="kpi"><span class="label">共振方向</span><span class="value">中共振偏多</span></div>
-<div class="kpi"><span class="label">共振率</span><span class="value">90.9% (10跌/1涨)</span></div>
-<div class="kpi"><span class="label">核心驱动</span><span class="value">宁德时代概念 (r=0.95)</span></div>
-<div class="kpi"><span class="label">基准·沪深300</span><span class="value">B 弱趋势多头 (53分)</span></div>
-<div class="kpi"><span class="label">基准·深证成指</span><span class="value">B 弱趋势多头 (48分)</span></div>
-</div>
-<div class="card">
-<h3>🔌 tdx-connector 热点 <span class="tdx-badge">v2.4</span></h3>
-<div class="kpi"><span class="label">热点事件</span><span class="value positive">70条 · 全部利好</span></div>
-<div class="kpi"><span class="label">最新催化</span><span class="value positive">六氟磷酸锂涨超20%</span></div>
-<div class="kpi"><span class="label">THS主题</span><span class="value">8个 (电解液/六氟磷酸锂...)</span></div>
-<div class="kpi"><span class="label">热点板块</span><span class="value">18个 (含10个业务概念)</span></div>
-<div class="kpi"><span class="label">信息面</span><span class="value">28个栏目 (竞争力/风险/战略)</span></div>
-<div class="kpi"><span class="label">行业事件</span><span class="value">电池今日无重大事件</span></div>
-</div>
+
+<div class="header">
+  <h1>天赐材料（002709）多指数共振分析</h1>
+  <div class="meta">Sector Trend v2.5.0 · 分析日期：2026-06-05 · 数据截止：2026-06-05</div>
+  <div class="price-row">49.40 <span style="font-size:.6em;color:#f85149">▼ 3.70%</span></div>
 </div>
 
-<div class="section">
-<h2>五层评分分解</h2>
-<table>
-<tr><th>评分层</th><th>得分</th><th>满分</th><th>判定依据</th></tr>
-<tr><td>方向层</td><td class="neutral">0</td><td>40</td><td>Close(49.40) < MA20(54.94)</td></tr>
-<tr><td>动量层</td><td class="bear">-25</td><td>30</td><td>RSI14=39.98(-15) + MACD柱=-1.96(-10)</td></tr>
-<tr><td>结构层</td><td class="neutral">0</td><td>20</td><td>无HL结构/无HH突破/区间稳定</td></tr>
-<tr><td>量价层</td><td class="bear">-5</td><td>10</td><td>无量下跌(V_Ratio=1.11,跌-3.70%)</td></tr>
-<tr style="font-weight:700;background:rgba(244,67,54,0.1)"><td>总计</td><td class="bear">-30</td><td>100</td><td>⚠️ 极强空头信号 (周线多头豁免→C震荡偏强)</td></tr>
-</table>
+<!-- Summary Grid -->
+<div class="summary-grid">
+  <div class="card danger">
+    <h3>五层评分</h3>
+    <div class="big red">-30 / 100</div>
+    <div class="sub">弱势</div>
+    <div class="detail">方向0 + 动量-25 + 结构0 + 量价-5</div>
+  </div>
+  <div class="card warn">
+    <h3>趋势标签</h3>
+    <div class="big yellow">C</div>
+    <div class="sub">震荡偏强 ⚠️ 周线豁免</div>
+    <div class="detail">原始F→周线多头→C（低配）</div>
+  </div>
+  <div class="card warn">
+    <h3>止跌评估</h3>
+    <div class="big yellow">弱</div>
+    <div class="sub">1/4 维度满足</div>
+    <div class="detail">仅量能维度（缩量日）</div>
+  </div>
+  <div class="card good">
+    <h3>周线状态</h3>
+    <div class="big green">多头排列</div>
+    <div class="sub">MACD金叉 · RSI 52.8</div>
+    <div class="detail">Close > MA20 · MA20上升</div>
+  </div>
+  <div class="card">
+    <h3>多指数共振</h3>
+    <div class="big" style="color:#58a6ff">49分</div>
+    <div class="sub">中共振偏多 · 90.9%一致</div>
+    <div class="detail">3偏多 / 0偏空 / 8中性</div>
+  </div>
+  <div class="card good">
+    <h3>舆情方向</h3>
+    <div class="big green">偏积极</div>
+    <div class="sub">3利好 / 1利空 / 6中性</div>
+    <div class="detail">机构目标价69.06 (+39.8%)</div>
+  </div>
 </div>
 
-<div class="section">
-<h2>关联指数全景（11个指数·按相关性分层）</h2>
-<table>
-<tr><th>指数名称</th><th>相关性</th><th>涨跌</th><th>趋势标签</th><th>评分</th><th>RSI14</th><th>止跌</th></tr>
-<tr style="background:rgba(126,184,218,0.1)"><td>宁德时代概念</td><td>0.95</td><td class="negative">-0.64%</td><td>B 弱趋势多头</td><td>43</td><td>45.3</td><td>弱</td></tr>
-<tr style="background:rgba(126,184,218,0.1)"><td>沪深300</td><td>0.95</td><td class="negative">-0.69%</td><td>B 弱趋势多头</td><td>53</td><td>54.9</td><td>中</td></tr>
-<tr style="background:rgba(126,184,218,0.1)"><td>深证成指</td><td>0.95</td><td class="negative">-0.27%</td><td>B 弱趋势多头</td><td>48</td><td>55.1</td><td>强</td></tr>
-<tr><td>特斯拉概念</td><td>0.54</td><td class="negative">-0.28%</td><td>C 震荡偏强</td><td>38</td><td>43.5</td><td>弱</td></tr>
-<tr><td>新能源汽车</td><td>0.53</td><td class="negative">-0.19%</td><td>C 震荡偏强</td><td>35</td><td>43.9</td><td>弱</td></tr>
-<tr><td>锂电池概念</td><td>0.53</td><td class="negative">-0.80%</td><td>C 震荡偏强</td><td>35</td><td>41.5</td><td>无</td></tr>
-<tr><td>电力设备·电池(SW)</td><td>0.50</td><td class="negative">-3.32%</td><td>C 震荡偏强</td><td>30</td><td>38.6</td><td>无</td></tr>
-<tr><td>电池(THS)</td><td>0.50</td><td class="negative">-2.24%</td><td>C 震荡偏强</td><td>30</td><td>36.4</td><td>无</td></tr>
-<tr><td>动力电池回收</td><td>0.50</td><td class="negative">-1.45%</td><td>C 震荡偏强</td><td>30</td><td>33.9</td><td>无</td></tr>
-<tr><td>磷化工</td><td>0.50</td><td class="negative">-1.83%</td><td>C 震荡偏强</td><td>30</td><td>32.5</td><td>无</td></tr>
-<tr><td>氟化工概念</td><td>0.42</td><td class="positive">+0.10%</td><td>C 震荡偏强</td><td>35</td><td>44.0</td><td>中</td></tr>
-</table>
+<!-- Core Contradiction Alert -->
+<div class="alert-box warn">
+  <strong>⚠️ 核心矛盾：</strong>日线总分-30（极度弱势）vs 周线多头排列 + 行业基本面强劲（电解液涨价+满产满销+百万吨大单落地）。这是典型的「日线回调+周线支撑+基本面向上」格局，非趋势反转信号。
 </div>
 
+<!-- Chapter 2: Coverage -->
 <div class="section">
-<h2>🔌 tdx-connector 热点事件明细（近3个月）<span class="tdx-badge">v2.4</span></h2>
-<table>
-<tr><th>日期</th><th>事件</th><th>类型</th></tr>
-<tr><td>2026-05-21</td><td>六氟磷酸锂5月价格上涨超20%</td><td class="positive">利好</td></tr>
-<tr><td>2026-05-12</td><td>六氟磷酸锂价格三轮上调</td><td class="positive">利好</td></tr>
-<tr><td>2026-03-30</td><td>储能需求非线性增长推动 电解液环节有望迎盈利重塑</td><td class="positive">利好</td></tr>
-</table>
-<div class="alert alert-success">
-<strong>事件统计</strong>：全部70条事件均为<strong>利好</strong>，其中供需类占78.6%、政策类11.4%、技术类10.0%。六氟磷酸锂涨价+储能需求增长构成持续正向催化。
-</div>
+  <h2>二、指数覆盖模型</h2>
+  <table>
+    <tr><th>层</th><th>来源</th><th>数量</th><th>已分析</th><th>无K线</th><th>覆盖率</th></tr>
+    <tr><td>SW L1</td><td>investoday</td><td>1</td><td>1</td><td>0</td><td>100%</td></tr>
+    <tr><td>SW L2</td><td>investoday</td><td>1</td><td>1</td><td>0</td><td>100%</td></tr>
+    <tr><td>SW L3</td><td>investoday</td><td>1</td><td>1</td><td>0</td><td>100%</td></tr>
+    <tr><td>CLS 概念</td><td>investoday</td><td>10</td><td>8</td><td>0</td><td>80%</td></tr>
+    <tr><td>基准指数</td><td>判定</td><td>2</td><td>2</td><td>0</td><td>100%</td></tr>
+    <tr style="font-weight:700"><td>合计</td><td></td><td>15</td><td>13</td><td>0</td><td>86.7%</td></tr>
+  </table>
+  <p style="color:#8b949e;font-size:.85em">行业链：电力设备(L1:630000) → 电池(L2:630700) → 电池(L3:630700)</p>
+  <p style="color:#8b949e;font-size:.85em">排除非业务标签：回购(CLS80250)、业绩超预期(CLS80382)</p>
 </div>
 
+<!-- Chapter 3: Index Ecology -->
 <div class="section">
-<h2>🔌 THS 热点主题库 <span class="tdx-badge">tdx R0a</span></h2>
-<table>
-<tr><th>主题</th><th>关联度</th><th>核心内容</th></tr>
-<tr><td>电解液</td><td>⭐⭐⭐⭐⭐</td><td>公司有VC产能1000吨，计划扩产2万吨</td></tr>
-<tr><td>六氟磷酸锂</td><td>⭐⭐⭐⭐⭐</td><td>全球市场份额第一，产能3.2万吨→10万吨</td></tr>
-<tr><td>宁德时代概念</td><td>⭐⭐⭐</td><td>下游客户宁德时代、LG化学等</td></tr>
-<tr><td>比亚迪概念</td><td>⭐⭐⭐</td><td>与比亚迪锂电池材料业务合作</td></tr>
-<tr><td>财报高增长</td><td>⭐⭐⭐</td><td>2026Q1归母净利润同比增长1005.75%</td></tr>
-</table>
+  <h2>三、指数生态全景</h2>
+  
+  <h3 style="color:#58a6ff;font-size:1.1em;margin-bottom:8px">核心概念（r ≥ 0.7）</h3>
+  <table>
+    <tr><th>指数</th><th>相关性</th><th>涨跌幅</th><th>RSI14</th><th>得分</th><th>趋势</th><th>止跌</th></tr>
+    <tr><td>宁德时代概念</td><td><strong>0.95</strong></td><td style="color:#f85149">-0.64%</td><td>45.3</td><td>43</td><td><span class="label label-b">B</span></td><td>弱</td></tr>
+    <tr><td>沪深300</td><td><strong>0.95</strong></td><td style="color:#f85149">-0.69%</td><td>54.9</td><td>53</td><td><span class="label label-b">B</span></td><td>中</td></tr>
+    <tr><td>深证成指</td><td><strong>0.95</strong></td><td style="color:#f85149">-0.27%</td><td>55.1</td><td>48</td><td><span class="label label-b">B</span></td><td>强</td></tr>
+  </table>
+
+  <h3 style="color:#d29922;font-size:1.1em;margin:16px 0 8px">次级概念（0.5 ≤ r < 0.7）</h3>
+  <table>
+    <tr><th>指数</th><th>相关性</th><th>涨跌幅</th><th>得分</th><th>趋势</th><th>止跌</th></tr>
+    <tr><td>特斯拉概念</td><td>0.54</td><td style="color:#f85149">-0.28%</td><td>38</td><td><span class="label label-c">C</span></td><td>弱</td></tr>
+    <tr><td>锂电池概念</td><td>0.53</td><td style="color:#f85149">-0.80%</td><td>35</td><td><span class="label label-c">C</span></td><td>无</td></tr>
+    <tr><td>新能源汽车</td><td>0.53</td><td style="color:#f85149">-0.19%</td><td>35</td><td><span class="label label-c">C</span></td><td>弱</td></tr>
+    <tr><td>电力设备·电池(SW)</td><td>0.50</td><td style="color:#f85149">-3.32%</td><td>30</td><td><span class="label label-c">C</span></td><td>无</td></tr>
+    <tr><td>电池(THS)</td><td>0.50</td><td style="color:#f85149">-2.24%</td><td>30</td><td><span class="label label-c">C</span></td><td>无</td></tr>
+    <tr><td>磷化工</td><td>0.50</td><td style="color:#f85149">-1.83%</td><td>30</td><td><span class="label label-c">C</span></td><td>无</td></tr>
+    <tr><td>动力电池回收</td><td>0.50</td><td style="color:#f85149">-1.45%</td><td>30</td><td><span class="label label-c">C</span></td><td>无</td></tr>
+  </table>
+
+  <h3 style="color:#8b949e;font-size:1.1em;margin:16px 0 8px">弱相关（r < 0.5）</h3>
+  <table>
+    <tr><th>指数</th><th>相关性</th><th>涨跌幅</th><th>得分</th><th>趋势</th><th>止跌</th></tr>
+    <tr><td>氟化工概念</td><td>0.42</td><td style="color:#3fb950">+0.10%</td><td>35</td><td><span class="label label-c">C</span></td><td>中</td></tr>
+  </table>
 </div>
 
+<!-- Chapter 4: Scoring -->
 <div class="section">
-<h2>核心结论</h2>
-<div class="alert alert-danger">
-<strong>⚠️ 极强空头信号（总分 -30）</strong>：个股日线处于空头区间，RSI14跌破40、MACD柱持续扩大、无量下跌。
-但<strong>周线多头排列触发豁免机制</strong>，趋势标签修正为 <strong>C（震荡偏强）</strong>，配置建议 = 标配。
+  <h2>四、个股五层评分与趋势诊断</h2>
+  <div class="grid-2">
+    <div>
+      <h3 style="color:#8b949e;font-size:.9em">走势概览</h3>
+      <div class="kpi-row"><span class="kpi-label">收盘价</span><span class="kpi-value red">49.40 ▼ -3.70%</span></div>
+      <div class="kpi-row"><span class="kpi-label">振幅</span><span class="kpi-value">2.50%</span></div>
+      <div class="kpi-row"><span class="kpi-label">成交量</span><span class="kpi-value">9,108万股 (V_R=1.11)</span></div>
+      <div class="kpi-row"><span class="kpi-label">MA5</span><span class="kpi-value red">51.31 ✗</span></div>
+      <div class="kpi-row"><span class="kpi-label">MA10</span><span class="kpi-value red">52.51 ✗</span></div>
+      <div class="kpi-row"><span class="kpi-label">MA20</span><span class="kpi-value red">54.94 ✗</span></div>
+      <div class="kpi-row"><span class="kpi-label">MA60</span><span class="kpi-value red">50.49 ✗</span></div>
+      <div class="kpi-row"><span class="kpi-label">RSI6</span><span class="kpi-value red">24.57 超卖 ⚠️</span></div>
+      <div class="kpi-row"><span class="kpi-label">RSI14</span><span class="kpi-value red">39.98</span></div>
+    </div>
+    <div>
+      <h3 style="color:#8b949e;font-size:.9em">五层评分明细</h3>
+      <div class="kpi-row"><span class="kpi-label">方向分</span><span class="kpi-value">0 / 40</span></div>
+      <div class="kpi-row"><span class="kpi-label">动量分</span><span class="kpi-value red">-25 / 30</span></div>
+      <div class="kpi-row"><span class="kpi-label">结构分</span><span class="kpi-value">0 / 20</span></div>
+      <div class="kpi-row"><span class="kpi-label">量价分</span><span class="kpi-value red">-5 / 10</span></div>
+      <div class="kpi-row" style="font-size:1.2em;padding:10px 0"><span class="kpi-label"><strong>总分</strong></span><span class="kpi-value red"><strong>-30 / 100 ⚠️</strong></span></div>
+      <div style="font-size:.85em;color:#8b949e;margin-top:10px">✅ 微函数验证一致，偏差=0</div>
+    </div>
+  </div>
+  
+  <h3 style="color:#d29922;margin-top:16px">趋势标签判定</h3>
+  <div class="alert-box warn">
+    原始判定：总分-30 → <strong>F（弱趋势空头）</strong><br>
+    周线状态：🐂 <strong>多头排列</strong>（is_perfect_bullish_alignment=true）<br>
+    豁免降级：F → <strong>C（震荡偏强）</strong><br>
+    配置建议：<strong>低配</strong>（周线豁免下限制性参与）
+  </div>
+
+  <h3 style="color:#f0883e;margin-top:16px">止跌四维评估：弱（1/4维）</h3>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0">
+    <div class="card" style="border-color:#30363d;text-align:center"><h3>A.价格</h3><div class="big red">✗</div><div class="sub">Low创新低</div></div>
+    <div class="card" style="border-color:#30363d;text-align:center"><h3>B.均线</h3><div class="big red">✗</div><div class="sub">全跌破</div></div>
+    <div class="card" style="border-color:#30363d;text-align:center"><h3>C.动能</h3><div class="big red">✗</div><div class="sub">MACD柱扩大</div></div>
+    <div class="card good" style="text-align:center"><h3>D.量能</h3><div class="big green">✓</div><div class="sub">有缩量日</div></div>
+  </div>
+  <div style="color:#8b949e;font-size:.85em">降档链：原始弱(1/4维，0确认) → 最终弱</div>
+
+  <h3 style="color:#3fb950;margin-top:16px">🐂 周线多头排列</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>判定</th></tr>
+    <tr><td>周线Close</td><td>49.40</td><td style="color:#3fb950">> MA20(48.01) ✅</td></tr>
+    <tr><td>周线MA20</td><td>上升中</td><td style="color:#3fb950">✅</td></tr>
+    <tr><td>周线MACD</td><td>DIF=3.51 DEA=3.16 柱=0.69</td><td style="color:#3fb950">金叉中 ✅</td></tr>
+    <tr><td>周线RSI14</td><td>52.82</td><td style="color:#58a6ff">偏强</td></tr>
+  </table>
 </div>
-<div class="alert alert-info">
-<strong>日弱周强 👀</strong>：日线空头信号强烈但周线多头排列提供支撑。关注日线总分回升至20以上作为反转确认信号。
+
+<!-- Chapter 5: Resonance -->
+<div class="section">
+  <h2>五、多指数共振分析</h2>
+  <div class="grid-2">
+    <div>
+      <h3 style="color:#8b949e;font-size:.9em">共振状态</h3>
+      <div class="kpi-row"><span class="kpi-label">共振评分</span><span class="kpi-value" style="color:#58a6ff">49 / 100</span></div>
+      <div class="kpi-row"><span class="kpi-label">共振方向</span><span class="kpi-value" style="color:#d29922">中共振偏多</span></div>
+      <div class="kpi-row"><span class="kpi-label">偏多指数</span><span class="kpi-value green">3</span></div>
+      <div class="kpi-row"><span class="kpi-label">偏空指数</span><span class="kpi-value">0</span></div>
+      <div class="kpi-row"><span class="kpi-label">中性指数</span><span class="kpi-value">8</span></div>
+      <div class="kpi-row"><span class="kpi-label">共振一致性</span><span class="kpi-value">90.9%</span></div>
+    </div>
+    <div>
+      <h3 style="color:#8b949e;font-size:.9em">驱动归因 TOP 5</h3>
+      <div class="kpi-row"><span class="kpi-label">1. 宁德时代概念</span><span class="kpi-value" style="color:#58a6ff">r=0.95 B</span></div>
+      <div class="kpi-row"><span class="kpi-label">2. 沪深300</span><span class="kpi-value" style="color:#58a6ff">r=0.95 B</span></div>
+      <div class="kpi-row"><span class="kpi-label">3. 深证成指</span><span class="kpi-value" style="color:#58a6ff">r=0.95 B</span></div>
+      <div class="kpi-row"><span class="kpi-label">4. 特斯拉概念</span><span class="kpi-value">r=0.54 C</span></div>
+      <div class="kpi-row"><span class="kpi-label">5. 锂电池概念</span><span class="kpi-value">r=0.53 C</span></div>
+      <div style="font-size:.85em;color:#f85149;margin-top:8px">⚠️ 个股α ≈ -3.06%（个股弱于概念）</div>
+    </div>
+  </div>
+  <div class="alert-box warn" style="margin-top:12px">
+    <strong>日周共振：日弱周强 👀</strong> 日线C（震荡偏强）vs 周线多头排列 — 典型「周线级别趋势向好 + 日线级别短期回调」
+  </div>
 </div>
-<div class="alert alert-success">
-<strong>🟢 基本面正向催化</strong>：六氟磷酸锂5月价格涨超20%、储能需求增长、Q1业绩增1005%——基本面与短期技术面形成背离。
+
+<!-- Chapter 6: Divergence -->
+<div class="section">
+  <h2>六、背离预警</h2>
+  <table>
+    <tr><th>类型</th><th>严重程度</th><th>描述</th></tr>
+    <tr>
+      <td>个股-概念背离</td>
+      <td>⚠️ 关注</td>
+      <td>宁德时代概念 -0.64% vs 个股 -3.70%，差值 -3.06pct，个股显著弱于核心概念</td>
+    </tr>
+    <tr>
+      <td>行业背离</td>
+      <td>—</td>
+      <td>电池行业(SW) -3.32% vs 个股 -3.70%，差额 -0.38pct，基本同步</td>
+    </tr>
+  </table>
 </div>
-<div class="alert alert-warn">
-<strong>⚠️ 背离预警</strong>：个股-3.70% vs 宁德时代概念-0.64%、基准沪深300-0.69%。个股显著跑输核心概念和基准，存在独立弱势特征。
+
+<!-- Chapter 7: Sentiment -->
+<div class="section">
+  <h2>七、行业舆情与市场情绪</h2>
+  
+  <h3 style="color:#58a6ff;font-size:1.1em">7.1 新闻舆情热度</h3>
+  <table>
+    <tr><th>日期</th><th>标题</th><th>来源</th><th>情绪</th></tr>
+    <tr><td>06-03</td><td>一年内锁单超300万吨，回应"以价换量"质疑</td><td>蓝鲸财经</td><td><span class="sentiment-tag sentiment-neu">中性</span></td></tr>
+    <tr><td>06-02</td><td>"电解液龙头"锁定超百万吨大单</td><td>南方都市报</td><td><span class="sentiment-tag sentiment-pos">利好</span></td></tr>
+    <tr><td>06-01</td><td>楚能新能源补充协议，电解液供应量上调至101万吨</td><td>财联社</td><td><span class="sentiment-tag sentiment-pos">利好</span></td></tr>
+    <tr><td>06-01</td><td>预计电解液供应量上调至不少于101万吨</td><td>每日经济新闻</td><td><span class="sentiment-tag sentiment-pos">利好</span></td></tr>
+    <tr><td>04-28</td><td>2026年一季报净利润为16.54亿元</td><td>界面新闻</td><td><span class="sentiment-tag sentiment-neu">中性</span></td></tr>
+    <tr><td>06-05</td><td>解密主力资金出逃股（被动提及）</td><td>证券时报网</td><td><span class="sentiment-tag sentiment-neu">中性</span></td></tr>
+  </table>
+  <div style="display:flex;gap:16px;margin:12px 0">
+    <div class="card" style="flex:1;text-align:center"><h3>利好</h3><div class="big green">3</div></div>
+    <div class="card" style="flex:1;text-align:center"><h3>利空</h3><div class="big red">1</div></div>
+    <div class="card" style="flex:1;text-align:center"><h3>中性</h3><div class="big" style="color:#8b949e">6</div></div>
+  </div>
+
+  <h3 style="color:#58a6ff;font-size:1.1em;margin-top:16px">7.3 机构关注度</h3>
+  <table>
+    <tr><th>指标</th><th>数据</th></tr>
+    <tr><td>覆盖机构</td><td><strong>21家</strong></td></tr>
+    <tr><td>2026E EPS共识</td><td>3.41元（同比+380%）</td></tr>
+    <tr><td>均目标价</td><td><strong style="color:#3fb950">69.06元</strong>（现价49.40 → +39.8%）</td></tr>
+    <tr><td>最高目标价</td><td>84.48（华泰证券/买入）</td></tr>
+    <tr><td>最低目标价</td><td>52.65</td></tr>
+  </table>
+
+  <table>
+    <tr><th>机构</th><th>评级</th><th>目标价</th><th>核心逻辑</th></tr>
+    <tr><td>东吴证券</td><td style="color:#3fb950">买入</td><td>76.00</td><td>Q1略超预期，多品类共享涨价弹性</td></tr>
+    <tr><td>群益证券</td><td style="color:#3fb950">增持</td><td>70.00</td><td>Q1净利+1006%，Q2需求旺盛</td></tr>
+    <tr><td>华泰证券</td><td style="color:#3fb950">买入</td><td>84.48</td><td>电解液龙头地位稳固</td></tr>
+  </table>
+
+  <h3 style="color:#58a6ff;font-size:1.1em;margin-top:16px">7.4 综合舆情研判</h3>
+  <div class="grid-2">
+    <div class="card good" style="text-align:center"><h3>新闻情绪</h3><div class="big green">偏积极</div></div>
+    <div class="card" style="text-align:center"><h3>社区热度</h3><div class="big yellow">中性偏高</div><div class="sub">"以价换量"争议</div></div>
+    <div class="card good" style="text-align:center"><h3>机构关注</h3><div class="big green">积极</div><div class="sub">21家覆盖，全部买入/增持</div></div>
+    <div class="card good" style="text-align:center;grid-column:span 2"><h3>综合方向</h3><div class="big green">🟢 偏积极</div><div class="sub">基本面向好 + 机构看多 + 大单落地</div></div>
+  </div>
+  <div class="alert-box warn" style="margin-top:12px">
+    <strong>⚠️ 舆情-价格背离：</strong>基本面利好密集（101万吨大单+六氟磷酸锂涨价+满产满销+Q1净利+1006%），但今日大跌3.70%。警惕"以价换量"市场担忧或短期获利盘出逃。
+  </div>
+
+  <h3 style="color:#58a6ff;font-size:1.1em;margin-top:16px">7.5 行业估值水位</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>5年分位</th><th>判定</th></tr>
+    <tr><td>电池行业PE</td><td>37.16</td><td>54.24%</td><td>🟡 中等</td></tr>
+    <tr><td>电池行业PB</td><td>4.19</td><td>61.94%</td><td>🟡 中等偏上</td></tr>
+    <tr><td>行业换手率</td><td>3.96%</td><td>—</td><td>正常</td></tr>
+  </table>
 </div>
+
+<!-- Chapter 8: New Concepts -->
+<div class="section">
+  <h2>八、新增概念追踪</h2>
+  <p style="color:#8b949e">无近期（&lt;60天）新增CLS概念。现有8个业务概念入选日期均为2024-04-17。</p>
+  <p style="color:#8b949e;font-size:.85em;margin-top:8px">驱动事件：楚能新能源101万吨电解液大单(06-01) + 六氟磷酸锂涨价超14% + 6月全球锂电排产268GWh环比+7.6%</p>
 </div>
+
+<!-- Chapter 9: Verdict -->
+<div class="section">
+  <h2>九、结论摘要</h2>
+  
+  <div class="verdict-box">
+    <h3>🎯 核心判断</h3>
+    <div class="verdict-row"><span class="v-label">趋势标签</span><span class="v-value" style="color:#d29922">C（震荡偏强）⚠️ 周线多头豁免</span></div>
+    <div class="verdict-row"><span class="v-label">总分</span><span class="v-value" style="color:#f85149">-30/100（弱势）</span></div>
+    <div class="verdict-row"><span class="v-label">止跌</span><span class="v-value" style="color:#d29922">弱（1/4维）</span></div>
+    <div class="verdict-row"><span class="v-label">周线</span><span class="v-value" style="color:#3fb950">🐂 多头排列</span></div>
+    <div class="verdict-row"><span class="v-label">共振</span><span class="v-value" style="color:#58a6ff">49分 / 中共振偏多 / 90.9%一致性</span></div>
+    <div class="verdict-row"><span class="v-label">舆情</span><span class="v-value" style="color:#3fb950">🟢 偏积极 · 机构均目标价69.06(+39.8%)</span></div>
+    <div class="verdict-row"><span class="v-label">定性</span><span class="v-value" style="color:#d29922">「周线支撑下的日线回调」，非趋势反转</span></div>
+    <div class="verdict-row"><span class="v-label">配置建议</span><span class="v-value" style="color:#d29922"><strong>低配</strong>（等待止跌信号确认后考虑加仓）</span></div>
+  </div>
+
+  <h3 style="color:#8b949e;font-size:1em;margin-top:20px">后续跟踪要点</h3>
+  <table>
+    <tr><th>优先级</th><th>跟踪事项</th><th>触发条件</th></tr>
+    <tr><td>🔴 高</td><td>日线止跌信号</td><td>≥2维止跌（价格HL+均线站上MA5）</td></tr>
+    <tr><td>🔴 高</td><td>MA20收复</td><td>Close站上54.94，方向分转正</td></tr>
+    <tr><td>🟡 中</td><td>MACD柱收窄</td><td>柱值从-1.96回升至 > -1.0</td></tr>
+    <tr><td>🟡 中</td><td>成交量放大阳线</td><td>V_Ratio>1.2 + 涨幅>2%</td></tr>
+    <tr><td>🟢 低</td><td>周线MACD持续</td><td>金叉是否持续</td></tr>
+    <tr><td>🟢 低</td><td>共振评分变化</td><td>是否下降（当前49）</td></tr>
+  </table>
 </div>
+
 <div class="footer">
-<a href="../../">🏠 报告索引</a>
-<a href="../">📅 天赐材料历史</a>
-<a href="report.html">📄 完整MD报告</a>
-<a href="https://github.com/zhiqunlin/sector-trend-reports">📂 GitHub</a>
-<br><br>
-<small>⚠️ AI生成 · 仅供参考 · 不构成投资建议 · Sector Trend v2.4.0</small>
+  <p>Sector Trend v2.5.0 · 报告生成时间：2026-06-05 18:03</p>
+  <p style="margin-top:8px">⚠️ 免责声明：本报告由 AI 基于多指数趋势量化分析系统规则生成。分析结论仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+</div>
+
 </div>
 </body>
 </html>
